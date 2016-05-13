@@ -1,23 +1,20 @@
 {
     "name": "ds3g-annots",
     "version": "1.1.2",
-    "private": true,
-    "repository": {
-        "type": "git",
-        "url": "https://bitbucket.org/docstream/annots.git"
-    },
-    "main": "./lib/annot.js",
+      "main": "./lib/annot.js",
     "scripts": {
-      "pretest": "coffee --bare --compile --output lib/ src/",
+      "postinstall": "npm run compile",
+      "pretest" : "npm run compile",
+      "compile": "node_modules/.bin/coffee --bare --compile --output lib/ src/",
       "test": "PATH=./node_modules/.bin:$PATH grunt"
     },
     "dependencies": {
-      "coffee-script": "1.8.0",
       "mongoose": "^4.3.6",
       "underscore": "~1.6.0"
     },
     "devDependencies": {
       "should": "~1.3.0",
+      "coffee-script": "1.8.0",
       "lodash": "2.4.1",
       "proxyquire": "0.6.0",
       "grunt": "~0.4.1",
