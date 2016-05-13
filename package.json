@@ -13,7 +13,7 @@
     },
     "dependencies": {
       "coffee-script": "1.8.0",
-      "mongoose": "^3.8.16",
+      "mongoose": "^4.3.6",
       "underscore": "~1.6.0"
     },
     "devDependencies": {
