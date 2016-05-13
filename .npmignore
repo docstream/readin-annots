@@ -1,0 +1,6 @@
+Gruntfile.js
+Makefile
+test/
+pre-commit.ex
+src/
+.idea
