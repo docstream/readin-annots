@@ -1,4 +1,3 @@
-"use strict";
 process.env.NODE_ENV = 'test';
 
 var should = require('should'),
@@ -7,6 +6,7 @@ var should = require('should'),
   mongoose = require('mongoose');
 
 describe("AnnotationService", function() {
+"use strict";
 
   var asc = null,
     requestFixture = {
@@ -66,7 +66,7 @@ describe("AnnotationService", function() {
   after(function(done) {
     console.log("\n == CLEANUP test_ db == ");
 
-    if(! process.env.NODE_ENV == 'test' ) {
+    if( process.env.NODE_ENV != 'test' ) {
       throw new Error("NOT IN TEST MODE");
     }
 
@@ -228,8 +228,10 @@ describe("AnnotationService", function() {
         done();
       },
       NOT_FOUND: function() {
+        console.error("NOT_FOUND was not expected!!!!!!!!");
       },
-      DEFAULT: function(res) {
+      DEFAULT: function(err,res) {
+        console.error("DEFAULT was not expected!!!!!!!!",err);
       }
     });
   });
@@ -336,7 +338,7 @@ describe("AnnotationService", function() {
       },
       DEFAULT: function(res) {
         res.data.totalCount.should.equal(1);
-        res.embeds.ids["id42"].should.be.ok;
+        res.embeds.ids.id42.should.be.ok;
         done();
       }
     });
@@ -356,7 +358,7 @@ describe("AnnotationService", function() {
       },
       DEFAULT: function(res) {
         res.data.totalCount.should.equal(1);
-        res.embeds.ids["id42"].should.be.ok;
+        res.embeds.ids.id42.should.be.ok;
         done();
       }
     });

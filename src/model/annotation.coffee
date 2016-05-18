@@ -36,8 +36,8 @@ annotationSchema.virtual('ebookId').get ->
   else
     ""
 
-# annotationSchema.virtual('isModified').get ->
-#   @.modifiedDate > @.createdDate
+annotationSchema.virtual('isMod').get ->
+  @.modifiedDate > @.createdDate
 
 annotationSchema.virtual('formatedModifiedDate').get ->
   date = new Date @.modifiedDate
