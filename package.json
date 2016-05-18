@@ -9,7 +9,7 @@
       "test": "PATH=./node_modules/.bin:$PATH grunt"
     },
     "dependencies": {
-      "mongoose": "^4.3.6",
+      "mongoose": "^4.3.17",
       "underscore": "~1.6.0"
     },
     "devDependencies": {
