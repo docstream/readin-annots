@@ -36,8 +36,8 @@ annotationSchema.virtual('ebookId').get ->
   else
     ""
 
-annotationSchema.virtual('isMod').get ->
-  @.modifiedDate > @.createdDate
+# annotationSchema.virtual('isModified_').get ->
+#   @.modifiedDate > @.createdDate
 
 annotationSchema.virtual('formatedModifiedDate').get ->
   date = new Date @.modifiedDate
@@ -210,7 +210,7 @@ annotationSchema.statics.updateSingle = (params, data, cb) ->
         _id: params._id
 
       data.modifiedDate = Date.now()
-      @findOneAndUpdate dbQuery, data, cb
+      @findOneAndUpdate dbQuery, data, {new:true}, cb
 
 
 annotationSchema.statics.deleteSingle = (params, cb) ->
@@ -222,7 +222,7 @@ annotationSchema.statics.deleteSingle = (params, cb) ->
     endUser: params.endUser,
     _id: params._id
   }
-  @.findOneAndUpdate dbQuery, updateData, cb
+  @findOneAndUpdate dbQuery, updateData, {new:true}, cb
 
 Annotation = null
 module.exports = (conn) ->
