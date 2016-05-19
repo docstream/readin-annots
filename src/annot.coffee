@@ -185,6 +185,7 @@ class AnnotsService
       endUser: params.userId
       validShareSet: params.validShareSet
 
+    # YAGNI?
     if _.isEmpty(annotData.shareSet)
       annotData.shareSet = []
 
@@ -265,7 +266,7 @@ class AnnotsService
       pageSize = parseInt(params.pageSize, radix)
       nextPage = if (totalCount - (page * pageSize) > 0) then page + 1 else page
       prevPage = if (totalCount - (page * pageSize) < pageSize) then page - 1 else page
-      prevPage = if (prevPage == 0) then 1 else prevPage;
+      prevPage = if (prevPage == 0) then 1 else prevPage
 
       data:
         totalCount: totalCount or 0,

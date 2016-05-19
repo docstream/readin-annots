@@ -123,11 +123,7 @@ describe("AnnotationService", function() {
         urlFragFree: 'some/url',
         urlFrag: 'id42',
         domainName: defaultDomain.domainName,
-        content: 'Lorem ipsum dolor sit amet, ' +
-          'consectetur adipiscing elit, sed do eiusmod tempor ' +
-          'incididunt ut labore et dolore magna aliqua. Ut enim ' +
-          'ad minim veniam, quis nostrud exercitation ullamco laboris ' +
-          'nisi ut aliquip ex ea commodo consequat.'
+        content: 'ØÆÅøæå Lorem ipsum dolor sit amet' 
       },
       params = {
         userId: loggedInUser._id,
@@ -214,7 +210,7 @@ describe("AnnotationService", function() {
     });
   });
 
-  it("update should fail in model", function(done) {
+  it ("update should fail in model", function(done) {
     var url = encodeURIComponent("some/url#id42"),
       annotData = annotations[url].data,
       params = {
@@ -228,10 +224,12 @@ describe("AnnotationService", function() {
         done();
       },
       NOT_FOUND: function() {
-        console.error("NOT_FOUND was not expected!!!!!!!!");
+        should.fail("NOT_FOUND wasnt expected");
       },
       DEFAULT: function(err,res) {
-        console.error("DEFAULT was not expected!!!!!!!!",err);
+        console.error(err);
+        console.log("result",res);
+        should.fail("DEFAULT wasnt expected");
       }
     });
   });
