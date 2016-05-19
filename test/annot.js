@@ -212,7 +212,7 @@ describe("AnnotationService", function() {
     });
   });
 
-  it ("update should fail in model" , function(done) {
+  it ("update should fail in model, ?? maybe not" , function(done) {
     var url = encodeURIComponent("some/url#id42"),
       annotData = annotations[url].data,
       params = {
