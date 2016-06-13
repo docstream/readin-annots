@@ -265,8 +265,7 @@ class AnnotsService
       page = parseInt(params.page, radix)
       pageSize = parseInt(params.pageSize, radix)
       nextPage = if (totalCount - (page * pageSize) > 0) then page + 1 else page
-      prevPage = if (totalCount - (page * pageSize) < pageSize) then page - 1 else page
-      prevPage = if (prevPage == 0) then 1 else prevPage
+      prevPage = if page == 1 then page else page - 1
 
       data:
         totalCount: totalCount or 0,
