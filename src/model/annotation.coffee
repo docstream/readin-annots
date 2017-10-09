@@ -9,12 +9,12 @@ annotationSchema = Schema({
   shareSet: [ String ]
   urlFragFree: {type: String, required: true}
   urlFrag: {type: String, required: true }
-  author: Object # free def
   content: String
   modifiedDate: {type: Date, default: Date.now}
   createdDate: {type: Date, default: Date.now}
   deleted: { type: Boolean, default: false }
   forPublisher: {type: Boolean, default: false}
+  embedded: Object # free metadata/join data
 })
 
 annotationSchema.virtual('encUri').get ->
