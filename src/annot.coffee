@@ -182,7 +182,7 @@ class AnnotsService
 
     params =
       _id: updateId
-      endUser: params.userId
+      endUser: params.userId 
       validShareSet: params.validShareSet
 
     # YAGNI?
