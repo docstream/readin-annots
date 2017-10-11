@@ -27,8 +27,24 @@ class AnnotsService
     @conn.close()
 
 
-  # View helper for listing of my annotations, DO NOT USE anywhere else!
+  legalSearchFilterVals : -> 
+    Annotation.legalSearchFilterVals
+
+
+  # NB! not same CB_HASH as the other methods!
+  #
+  #  options =
+  #    filter : [one of vals in ::legalSearchFilterVals ]
+  #    page : page-num
+  #    max : num of docs
+  #    validshareSet : []
+  #    userId : ObjectID as string , secondary_key
+  #    domainName : secondary_key
+  #
+  #      (previosly used as viewHelper)
+
   myAnnots: (options, cb) =>
+
     query = {
       filter: options.filter
       page: options.page

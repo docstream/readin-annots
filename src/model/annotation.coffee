@@ -98,8 +98,15 @@ annotationSchema.statics.overview = (params, cb) ->
     cb error
 
 
+annotationSchema.statics.legalSearchFilterVals = [
+  "private","shared","shared-with-me","deleted","ALL"
+]
 
 annotationSchema.statics.search = (params, query, cb) ->
+
+  absoluteMax = 1999  # just to avoid an STACKOVERFLOW :D
+
+
   unless _.isArray params.validShareSet
     params.validShareSet = [params.validShareSet]
 
@@ -142,10 +149,10 @@ annotationSchema.statics.search = (params, query, cb) ->
         dbQuery.endUser = params.endUser
         dbQuery.deleted = true
       else
-        #do nothing
+        #do nothing since ALL
 
   if query.page
-    absoluteMax = 50
+    
     pageSize = if query.max then query.max else 10
     if pageSize > absoluteMax
       pageSize = absoluteMax

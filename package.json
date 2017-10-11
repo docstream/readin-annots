@@ -1,6 +1,6 @@
 {
     "name": "ds3g-annots",
-    "version": "1.2.0",
+    "version": "1.2.1",
       "main": "./lib/annot.js",
     "scripts": {
       "postinstall": "node_modules/.bin/coffee --bare --compile --output lib/ src/",
